@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+    this is the index page
+{% endblock %}
+
+{% block body %}
+    {% for question in questions %}
+    Question: {{ question.question_text }} <br/>
+    Date published: {{ question.pub_date }} <br/>
+    Choices: <br/>
+        {% for choice in question.choices.all %}
+            text: {{ choice.choice_text }} <br/>
+            votes: {{ choice.votes }} <br/><br/>
+        {% endfor %}
+    <br/>
+    {% endfor %}
+{% endblock %}
