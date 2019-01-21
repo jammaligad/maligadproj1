@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Question
 from .forms import QuestionModelForm
@@ -19,7 +19,11 @@ def detail(request, question_id):
 
 def update(request, question_id):
     if request.method == 'POST':
-        form = request.POST['form']
+        question = Question.objects.get(id=question_id)
+        form = QuestionModelForm(request.POST, instance=question)
+        if form.is_valid():
+            form.save()
+        return HttpResponse('Question updated')
     else:
         question = Question.objects.get(id=question_id)
         context = {}
