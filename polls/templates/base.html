@@ -1,14 +1,27 @@
+{% load static %}
 <html>
     <head>
         <title>
-            {% block head %} 
-                placeholder
-            {% endblock %}
+            {% block head %} {% endblock %}
         </title>
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/materialize/css/materialize.min.css' %}"></link>
+        {% block customcss %} {% endblock %}
     </head>
     <body>
-        {% block body %}
-            placeholder
-        {% endblock %}
+        <nav>
+            <div class="nav-wrapper">
+            <a href="#" class="brand-logo">Polls</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{% url 'polls:index' %}">Home</a></li>
+                <li><a href="{% url 'polls:index' %}">Help</a></li>
+                <li><a href="#">Test</a></li>
+            </ul>
+            </div>
+        </nav>
+        <div class="container">
+        {% block body %} {% endblock %}
+    <script src="{% static 'polls/materialize/js/materialize.min.js' %}"></script>
+    {% block customjs %} {% endblock %}
+        </div>
     </body>
 </html>
