@@ -12,4 +12,4 @@ class Question(models.Model):
 class Choice(models.Model):
     question = models.ForeignKey(Question, on_delete=models.CASCADE, related_name='choices') # connect to the class, models.CASCADE
     choice_text = models.CharField(max_length=200)
-    votes = models.IntegerField(default=0) # default is an optional parameter
+    votes = models.IntegerField(default=0)
